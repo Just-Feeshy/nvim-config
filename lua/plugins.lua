@@ -43,9 +43,6 @@ return {
   -- Numbers toggle plugin
   require("modules.numbers"),
 
-  -- Markdown Preview
-  require("modules.markdown_preview"),
-
   -- Snacky
   require("modules.snacks"),
 
