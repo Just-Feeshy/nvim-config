@@ -1,5 +1,4 @@
 " Colorscheme
-colorscheme nightfox
 highlight Visual guibg=#2b2f36
 
 " Vim Tex
