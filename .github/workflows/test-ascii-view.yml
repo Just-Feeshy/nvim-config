@@ -1,0 +1,58 @@
+name: Test ascii-view build
+
+on:
+  push:
+    paths:
+      - 'submodules/ascii-view/**'
+      - 'init.lua'
+  pull_request:
+    paths:
+      - 'submodules/ascii-view/**'
+      - 'init.lua'
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Create dependencies directory
+        run: mkdir -p dependencies
+        shell: bash
+
+      - name: Build ascii-view (Unix)
+        if: runner.os != 'Windows'
+        run: |
+          cd submodules/ascii-view
+          make clean
+          make release
+          cp ascii-view ../../dependencies/
+
+      - name: Build ascii-view (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          cd submodules/ascii-view
+          make clean
+          make release
+          copy ascii-view.exe ..\..\dependencies\
+        shell: cmd
+
+      - name: Verify executable exists (Unix)
+        if: runner.os != 'Windows'
+        run: |
+          test -f dependencies/ascii-view
+          ./dependencies/ascii-view --help || true
+
+      - name: Verify executable exists (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          if exist dependencies\ascii-view.exe (echo OK) else (exit 1)
+          dependencies\ascii-view.exe --help || exit 0
+        shell: cmd
