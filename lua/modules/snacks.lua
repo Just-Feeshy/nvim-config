@@ -32,7 +32,7 @@ return {
 
 			{
 			  section = "terminal",
-			  cmd = "ascii-view ~/.config/nvim/image/fesh2.png",
+			  cmd = vim.fn.stdpath('config') .. "/dependencies/ascii-view " .. vim.fn.stdpath('config') .. "/image/fesh2.png",
 			  random = 15,
 			  pane = 2,
 			  padding = 0,

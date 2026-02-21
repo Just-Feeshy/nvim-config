@@ -10,6 +10,28 @@ do
   end
 end
 
+do
+  local config_dir = vim.fn.stdpath('config')
+  local deps_dir = config_dir .. '/dependencies'
+  local submodule_dir = config_dir .. '/submodules/ascii-view'
+
+  local is_windows = package.config:sub(1, 1) == '\\'
+  local exe_name = is_windows and 'ascii-view.exe' or 'ascii-view'
+  local exe_path = deps_dir .. '/' .. exe_name
+
+  os.execute(string.format('mkdir %s "%s" 2>%s', is_windows and '' or '-p', deps_dir, is_windows and 'nul' or '/dev/null'))
+
+  local f = io.open(exe_path, 'r')
+  if not f then
+    local build_cmd = is_windows
+      and string.format('cd /d "%s" && make clean && make release && copy "%s" "%s"', submodule_dir, exe_name, exe_path)
+      or string.format('cd "%s" && make clean && make release && cp "%s" "%s"', submodule_dir, exe_name, exe_path)
+    os.execute(build_cmd)
+  else
+    f:close()
+  end
+end
+
 require('config.lazy')
 require('keybinds')
 
