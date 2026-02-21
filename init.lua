@@ -1,6 +1,4 @@
-vim.cmd([[
-so ~/.config/nvim/og.vim
-]])
+vim.cmd('source ' .. vim.fn.stdpath('config') .. '/og.vim')
 
 do
   local uv = vim.uv or vim.loop
@@ -99,3 +97,7 @@ cmp.setup({
     { name = 'path' },
   })
 })
+
+
+
+
