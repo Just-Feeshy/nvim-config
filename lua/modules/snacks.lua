@@ -47,6 +47,20 @@ return {
 	keys = {
 		{ keymaps.primary .. "l", function() require("snacks").picker.files() end, desc = "Find Files (Snacks Picker)" },
 		{ keymaps.primary .. "k", function() require("snacks").picker.grep() end, desc = "Grep Project (Snacks Picker)" },
+
+		{
+			keymaps.primary .. "j",
+			function()
+				vim.ui.input({ prompt = "Run: " }, function(cmd)
+					if not cmd or cmd == "" then return end
+					require("snacks").terminal(cmd, {
+						auto_close = false, -- keep output up until you close it
+						win = { position = "float", width = 0.7, height = 0.5, border = "rounded", title = " " .. cmd .. " " },
+					})
+				end)
+			end,
+			desc = "Run Command (Snacks Terminal)",
+		},
 		{ keymaps.primary .. 'i', function() require("snacks").rename.rename_file() end, desc = "Fast Rename of Current File" },
 
 		{
