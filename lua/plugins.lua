@@ -2,7 +2,7 @@ return {
   require("modules.which-key"),
   require("modules.vim_sleuth"),
   require("modules.transparent"),
-  require("modules.nightfox"),
+  require("modules.carbonfox"),
   require("modules.symbols_outline"),
   require("modules.vim_lion"),
   require("modules.vim_better_whitespace"),
