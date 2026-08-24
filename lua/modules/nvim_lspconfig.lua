@@ -35,6 +35,7 @@
           "lua_ls",
           "jdtls",
 		  "clangd",
+          "ts_ls",
         },
         automatic_enable = false,
       })
@@ -87,6 +88,9 @@
 			filetypes = { "c", "cpp", "objc", "objcpp" },
 			root_markers = { "compile_commands.json", "meson.build", ".git" },
 		},
+
+        -- typescript-language-server; lspconfig's defaults cover cmd/filetypes/root_markers
+        ts_ls = { capabilities = capabilities },
 
         -- add more servers here, e.g.:
         -- pyright = { capabilities = capabilities },
