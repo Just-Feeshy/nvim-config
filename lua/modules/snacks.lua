@@ -46,6 +46,7 @@ return {
 	},
 	keys = {
 		{ keymaps.primary .. "l", function() require("snacks").picker.files() end, desc = "Find Files (Snacks Picker)" },
+		{ keymaps.primary .. "k", function() require("snacks").picker.grep() end, desc = "Grep Project (Snacks Picker)" },
 		{ keymaps.primary .. 'i', function() require("snacks").rename.rename_file() end, desc = "Fast Rename of Current File" },
 
 		{
