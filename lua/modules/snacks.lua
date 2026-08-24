@@ -6,6 +6,7 @@ return {
 	lazy = false,
 	opts = {
 		lazygit = {},
+		notifier = { enabled = true },
 		terminal = { enabled = true },
 		quickfile = { enabled = true, exclude = { "latex" }, },
 

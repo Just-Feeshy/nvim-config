@@ -30,6 +30,8 @@ require("lazy").setup({
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
+  -- ponytail: nothing here needs luarocks; drop the hererocks bootstrap
+  rocks = { enabled = false },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
