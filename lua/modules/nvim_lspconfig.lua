@@ -35,7 +35,6 @@
           "lua_ls",
           "jdtls",
 		  "clangd",
-          "ts_ls",
           "slangd", -- mason package "slang" (slangd + slangc)
         },
         automatic_enable = false,
@@ -99,9 +98,6 @@
             },
           },
         },
-
-        -- typescript-language-server; lspconfig's defaults cover cmd/filetypes/root_markers
-        ts_ls = { capabilities = capabilities },
 
         -- add more servers here, e.g.:
         -- pyright = { capabilities = capabilities },

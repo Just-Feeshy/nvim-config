@@ -21,6 +21,7 @@ return {
   -- LSP and Autocompletion
   require("modules.nvim_jdtls"),
   require("modules.nvim_lspconfig"),
+  require("modules.typescript_tools"),
   require("modules.mason"),
 
   -- CMP (autocomplete)
