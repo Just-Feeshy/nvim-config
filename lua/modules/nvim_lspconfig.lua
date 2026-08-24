@@ -36,6 +36,7 @@
           "jdtls",
 		  "clangd",
           "ts_ls",
+          "slangd", -- mason package "slang" (slangd + slangc)
         },
         automatic_enable = false,
       })
@@ -88,6 +89,16 @@
 			filetypes = { "c", "cpp", "objc", "objcpp" },
 			root_markers = { "compile_commands.json", "meson.build", ".git" },
 		},
+
+        -- slangd: lspconfig defaults cover cmd/filetypes(hlsl,shaderslang)/root_markers
+        slangd = {
+          capabilities = capabilities,
+          settings = {
+            slang = {
+              inlayHints = { deducedTypes = true, parameterNames = true },
+            },
+          },
+        },
 
         -- typescript-language-server; lspconfig's defaults cover cmd/filetypes/root_markers
         ts_ls = { capabilities = capabilities },
